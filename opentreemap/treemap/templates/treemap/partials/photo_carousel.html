@@ -3,7 +3,7 @@
 {# Template meant to be included as the contents of a Bootstrap Carousel #}
 {# Expects to be given - photos: a list of MapFeaturePhoto objects, error: an optional error message #}
 
-<div class="carousel-inner">
+<div class="carousel-inner hidden">
 {% for photo in photos %}
   <div class="item {{ forloop.first|yesno:"active," }}">
     <a data-toggle="modal" href="#photo-lightbox" class="inspect-photo"
@@ -33,7 +33,7 @@
 </div>
 <div id="tree-photo-thumbnails">
   <div>
-    <ol class="carousel-indicators">{% for photo in photos %}
+    <ol class="carousel-indicators" style="height: 80px; width: 80px;">{% for photo in photos %}
       <li data-target="#photo-carousel" data-slide-to="{{ forloop.counter0 }}"
             class="{{ forloop.first|yesno:"active," }}">
         <img src="{{ photo.thumbnail }}" alt="">

@@ -36,20 +36,3 @@
   {% endfor %}
 </div>
 {% endif %}
-
-{% if feature.is_plot %}
-<div class="well">
-  <h3>{% trans "Nearby Trees" %}</h3>
-  {% with nearby=plot.nearby_plots %}
-  {% if nearby %}
-  </ul>
-  {% for plot in nearby %}
-  <li><a href="{% url 'map_feature_detail' instance_url_name=request.instance.url_name feature_id=plot.pk %}">{{ plot.pk }}</a></li>
-  {% endfor %}
-  </ul>
-  {% else %}
-  <p class="text-muted"><em>{% trans "There are no trees nearby" %}</em></p>
-  {% endif %}
-</div>
-{% endwith %}
-{% endif %}

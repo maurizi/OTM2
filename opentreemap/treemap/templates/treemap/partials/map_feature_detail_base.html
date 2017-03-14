@@ -6,21 +6,7 @@
 {% load staticfiles %}
 {% load auth_extras %}
 
-<div class="detail-header">
-    {% if request.instance.is_public %}
-        <div class="js-container pull-right" style="display: none">
-            <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u={{ share.url }}">
-                <img src="/static/img/facebook_32.png">
-            </a>
-            <a target="_blank" href="http://twitter.com/share?url={{ share.url }}&text={{ share.title }}">
-                <img src="/static/img/twitter_32.png">
-            </a>
-            <a target="_blank" href="https://plus.google.com/share?url={{ share.url }}">
-                <img src="/static/img/googleplus_32.png">
-            </a>
-        </div>
-        <button class="btn share">Share</button>
-    {% endif %}
+<div class="detail-header" style="position: absolute; top: -100px; left: 110px;">
     <h2 class="common-name" id="map-feature-title">
         {{ title }}
         <a id="favorite-link"
@@ -42,7 +28,7 @@
     <h4 class="address" id="map-feature-address">{{ feature.address_full }}</h4>
 </div>
 <div class="col-md-8">
-    <p>
+    <p style="position: absolute; top: -16px; left: 104px; width: 66vw">
         {% if feature.is_plot or feature.is_editable %}
             <button id="edit-map-feature"
                     data-class="display"
@@ -77,6 +63,28 @@
                 data-href="{{ request.get_full_path }}"
                 class="btn btn-sm btn-danger">{% trans "Delete" %}</button>
         <img class="spinner" src="{% static "img/spinner.gif" %}" style="display: none;">
+        <a class="btn" style="    height: 30px;
+            border-radius: 100%;
+            width: 30px;
+            background-color: darkgreen;
+            float: right;
+            color: white;">
+          <i class="icon-map" style="    font-size: larger;
+              margin-left: -9px;
+              margin-top: -4px;
+              display: block;"></i>
+        </a>
+        <a class="btn" style="    height: 30px;
+            border-radius: 100%;
+            width: 30px;
+            background-color: darkgreen;
+            float: right;
+            color: white;">
+          <i class="icon-street-view" style="    font-size: larger;
+              margin-left: -9px;
+              margin-top: -4px;
+              display: block;"></i>
+        </a>
     </p>
 
     <!-- Alerts -->
@@ -86,7 +94,6 @@
         <button id="delete-confirm" class="btn btm-small btn-danger">{% trans "Confirm Deletion" %}</button>
         <button id="delete-cancel" class="btn btm-small">{% trans "Cancel" %}</button>
     </div>
-    <hr>
     {% include 'treemap/partials/detail_external_link.html' %}
 
     <!-- Map Feature Details -->
@@ -101,6 +108,17 @@
 
     <!-- Commenting -->
     <h3>{% trans "Comments" %}</h3>
+    <div class="js-container pull-right" style="display: block;position: absolute;right: 15px;bottom: 196px;/* height: 30px; */">
+        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://localhost:6060/latreemap/features/2597086/">
+            <img src="/static/img/facebook_32.png">
+        </a>
+        <a target="_blank" href="http://twitter.com/share?url=http://localhost:6060/latreemap/features/2597086/&amp;text=Chinese pistache on TreeMapLA">
+            <img src="/static/img/twitter_32.png">
+        </a>
+        <a target="_blank" href="https://plus.google.com/share?url=http://localhost:6060/latreemap/features/2597086/">
+            <img src="/static/img/googleplus_32.png">
+        </a>
+    </div>
     <div id="comments-container">
         {% get_comment_list for feature as comments %}
         {% for comment in comments|fill_tree|annotate_tree %}

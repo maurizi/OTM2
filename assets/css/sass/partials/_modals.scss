@@ -34,3 +34,10 @@
 .modal.modal-primary {
     @include color-modal($primary-color);
 }
+
+
+@media #{$screen-xs} {
+    .modal {
+        z-index: 4002;
+    }
+}

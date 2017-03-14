@@ -66,11 +66,12 @@
     <div class="container contained topper tree-details">
         <div class="row">
             <div class="col-md-3">
-                <div class="photo-container">
-                    <div id="photo-carousel" class="carousel slide" data-interval="">
+                <div class="photo-container" style="height: 110px; width: 80px;">
+                    <div id="photo-carousel" style="height: 80px;" class="carousel slide" data-interval="">
                         {% include "treemap/partials/photo_carousel.html" %}
                     </div>
-                    <button data-toggle="modal"
+                    <button style="position: static; width: 80px; margin-top: 15px;"
+                            data-toggle="modal"
                             data-target="#upload-panel"
                             data-href="{{ request.get_full_path }}"
                             data-always-enable="{{ last_effective_instance_user|photo_is_addable:feature }}"
@@ -82,7 +83,7 @@
                             {% endif %}
                             class="btn btn-xs add-photos">{% trans "Add Photo" %}</button>
                 </div>
-                <div id="sidebar">
+                <div id="sidebar" style="float: left; width: 100%;">
                     {% include "treemap/partials/sidebar.html" %}
                 </div>
             </div>
